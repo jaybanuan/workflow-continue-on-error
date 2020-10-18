@@ -1,4 +1,4 @@
-name: test continue-on-error
+name: test continue-on-error ${{ github.event.inputs.job }}
 on:
   workflow_dispatch:
     inputs:
