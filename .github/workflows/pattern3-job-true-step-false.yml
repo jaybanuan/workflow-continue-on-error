@@ -1,0 +1,26 @@
+name: Pattern 3, job=true, step=false
+on:
+  workflow_dispatch:
+
+jobs:
+  test-job:
+    name: test job
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: step 1 (OK)
+        run: echo "OK"
+
+      - name: step 2 (NG)
+        continue-on-error: false
+        run: echo "NG"; exit 1
+
+      - name: step 3 (OK)
+        run: echo "OK"
+
+  post-job:
+    name: post job
+    runs-on: ubuntu-latest
+    steps:
+      - name: post step
+        run: echo "post job"
